@@ -1,4 +1,5 @@
 ﻿using net_cp1_Kevin_Zamora;
+using net_cp1_Kevin_Zamora.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ public class CP1 {
 
     // Console.WriteLine("Introduce una dirección Id: ");
         int num = Convert.ToInt32(Console.ReadLine());
-    // FindById();
+     //public Product FindById(num);
 
     
 

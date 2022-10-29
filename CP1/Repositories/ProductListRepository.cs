@@ -19,20 +19,64 @@ public class ProductListRepository : IProductRepository {
 
 
 
-    public String FindById(int id) {
+    public Product FindById(int id) {
 
         foreach (Product product in products)
         {
             if (product.Id == id)
-                return $"Se ha encontrado el siguente producto al buscar por ID: {product}";
+                Console.WriteLine($"Se ha encontrado el siguente producto al buscar por ID: \n");
+                return product;
 
         }
-
-        return "No se ha encontrado nada en la busqueda de la ID introducida";
+        Console.WriteLine("No se ha encontrado nada, en la busqueda, con la ID introducida");
+        return null;
     }
 
     public List<Product> FindAll() {
         return products;
     }
+    
+    public List<Product> FindByPrice(float price) {
+
+        List<Product> productsByPrice = new List<Product>();
+
+        foreach (Product product in products)
+        {
+            if (product.Precio == price)
+            {
+                Console.WriteLine("Se han encontrado los siguientes productos: ");
+                productsByPrice.Add(product);
+                return productsByPrice;
+            }
+            Console.WriteLine("No se han encontrado productos con este precio");
+            return null;
+        }
+        return null;
+
+    }
+
+    public List<Product> FindByCreationDateTime(DateTime introducedDate) {
+
+        List<Product> productsByCreationDate = new List<Product>();
+
+        foreach (Product product in products)
+        {
+            if (product.FechaCreacion == introducedDate)
+            {
+                Console.WriteLine("Se han encontrado los siguientes productos: ");
+                productsByCreationDate.Add(product);
+                return productsByCreationDate;
+            }
+            Console.WriteLine("No se han encontrado productos con esta fecha");
+            return null;
+        }
+        return null;
+
+    }
+
+
+
 
 }
+
+

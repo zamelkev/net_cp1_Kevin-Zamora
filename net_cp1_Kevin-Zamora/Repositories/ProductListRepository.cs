@@ -21,21 +21,21 @@ public class ProductListRepository : IProductRepository {
 
            
         
-public Models.Product FindById(int id) {
+    public String FindById(int id) {
 
         foreach (Product product in products)
         {
             if (product.Id == id)
-                return product;
+                return $"Se ha encontrado el siguente producto al buscar por ID: {product}";
+                
         }
 
-        return null;
+        return "No se ha encontrado nada en la busqueda de la ID introducida";
     }
 
-
-
-
-
+    public List<Product> FindAll() {
+        return products;
+    }
 
 }
 

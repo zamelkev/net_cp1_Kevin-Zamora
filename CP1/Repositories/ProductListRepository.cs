@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CP1.Models;
+using CP1.Repositories;
+
+namespace CP1.Repositories; 
+public class ProductListRepository : IProductRepository {
+
+    public List<Product> products = new List<Product> {
+        new Product{ Nombre = "Macbook Pro", Fabricante =  new Manufacturer { Nombre = "Apple" }, Cantidad = 5, Peso = 2, Coste = 500, Precio = 2000, FechaCreacion = new DateTime(2022, 2, 1) },
+        new Product{ Nombre = "Macbook Air", Fabricante =  new Manufacturer { Nombre = "Apple" }, Cantidad = 15, Peso = 1, Coste = 500, Precio = 2000, FechaCreacion = new DateTime(2021, 2, 1) },
+        new Product{ Nombre = "Ideopad", Fabricante =  new Manufacturer { Nombre = "Lenovo" }, Cantidad = 10, Peso = 2, Coste = 500, Precio = 2000, FechaCreacion = new DateTime(2021, 3, 15) },
+
+    };
+
+
+
+
+    public String FindById(int id) {
+
+        foreach (Product product in products)
+        {
+            if (product.Id == id)
+                return $"Se ha encontrado el siguente producto al buscar por ID: {product}";
+
+        }
+
+        return "No se ha encontrado nada en la busqueda de la ID introducida";
+    }
+
+    public List<Product> FindAll() {
+        return products;
+    }
+
+}

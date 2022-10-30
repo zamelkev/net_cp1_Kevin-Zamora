@@ -29,6 +29,7 @@ namespace CP1.Repositories {
 
         public double CalculateNetProfit();
 
+        public int FindMaxId();
         public bool Save(Product product);
 
     }

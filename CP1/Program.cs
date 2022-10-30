@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CP1.Models;
-using CP1.Repositories;
+﻿using CP1;
+using System.Xml.Linq;
 
-namespace CP1;
 public class program {
 
     // Console.WriteLine("Main Method");

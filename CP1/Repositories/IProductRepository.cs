@@ -15,5 +15,21 @@ namespace CP1.Repositories {
 
         public List<Product> FindByPrice(float price);
 
+        public List<Product> FindByCreationDateTime(DateTime introducedDate);
+
+        public List<Product> FindByManufacturer(string fabricante);
+
+        public Product UpdateProduct(int Id);
+
+        public bool DeleteById(int id);
+
+        public bool DeleteAll();
+
+        public double CalculatePricesSum();
+
+        public double CalculateNetProfit();
+
+        public bool Save(Product product);
+
     }
 }

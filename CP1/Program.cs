@@ -1,19 +1,16 @@
 ﻿using CP1;
 using System.Xml.Linq;
+using CP1.Repositories;
 
-public class program {
+Console.WriteLine("Main Method");
 
-    // Console.WriteLine("Main Method");
-    
-    
-    /*
-    Console.WriteLine("Introduce una dirección Id: ");
-    int num = Convert.ToInt32(Console.ReadLine());
-    IProductRepository.FindById(num);
-    */
+IProductRepository productRepo = new ProductListRepository();
 
-}
- 
+Console.WriteLine("Introduce una dirección Id: ");
+int num = Convert.ToInt32(Console.ReadLine());
+productRepo.FindById(num);
+
+
 
     
 

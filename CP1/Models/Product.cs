@@ -20,7 +20,7 @@ namespace CP1.Models {
 
 
         public override string ToString() {
-            return $"Producto fabricado por {Fabricante} con: Id {Id} y Nombre {Nombre} y con un Peso de {Peso}. Actualmente hay en 'stock' {Cantidad} unidades. La fecha de creación fue: {FechaCreacion}";
+            return $"Producto '{Nombre}'; fabricado por {Fabricante}, almacenado en la posición {Id} (dentro de la base de datos) y con un Peso de {Peso}. Actualmente hay {Cantidad} unidades en 'stock'. Y la fecha de creación fue: {FechaCreacion}";
         }
 
     }

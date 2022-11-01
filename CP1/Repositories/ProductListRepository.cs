@@ -32,6 +32,7 @@ public class ProductListRepository : IProductRepository {
         {
             if (product.Id == id)
                 Console.WriteLine($"Se ha encontrado el siguente producto al buscar por ID: \n");
+                Console.WriteLine(product);
                 return product;
 
         }

@@ -18,5 +18,9 @@ namespace CP1.Models {
 
         public Manufacturer() { }
 
+        public override string ToString() {
+            return $"{Nombre}";
+        }
+
     }
 }

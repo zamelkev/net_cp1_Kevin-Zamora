@@ -13,17 +13,23 @@ using CP1.Repositories;
 namespace CP1.Repositories; 
 public class ProductListRepository : IProductRepository {
 
-    public List<Product> products = new List<Product> {
-        new Product{ Nombre = "Macbook Pro", Fabricante =  new Manufacturer { Nombre = "Apple" }, Cantidad = 5, Peso = 2, Coste = 500.75f, Precio = 1994.99f, FechaCreacion = new DateTime(2022, 2, 1) },
-        new Product{ Nombre = "Macbook Air", Fabricante =  new Manufacturer { Nombre = "Apple" }, Cantidad = 15, Peso = 1, Coste = 256.25f, Precio = 998.99f, FechaCreacion = new DateTime(2021, 2, 1) },
-        new Product{ Nombre = "Ideopad", Fabricante =  new Manufacturer { Nombre = "Lenovo" }, Cantidad = 10, Peso = 2, Coste = 250.5f, Precio = 800.0f, FechaCreacion = new DateTime(2021, 3, 15) },
-
-    };
-
+    // Atributos
+    private List<Product> products;
+    
+    // Constructor
+    public ProductListRepository() {
+        // Simulamos que la lista products es una base de datos
+        products = new List<Product> {
+            new Product{ Id = 1, Nombre = "Macbook Pro", Fabricante =  new Manufacturer { Nombre = "Apple" }, Cantidad = 5, Peso = 2.25f, Coste = 500.75f, Precio = 1994.99f, FechaCreacion = new DateTime(2022, 2, 1) },
+            new Product{ Id = 2, Nombre = "Macbook Air", Fabricante =  new Manufacturer { Nombre = "Apple" }, Cantidad = 15, Peso = 1.5f, Coste = 256.25f, Precio = 998.99f, FechaCreacion = new DateTime(2021, 2, 1) },
+            new Product{ Id = 3, Nombre = "Ideopad", Fabricante =  new Manufacturer { Nombre = "Lenovo" }, Cantidad = 10, Peso = 2.1f, Coste = 250.5f, Precio = 800.0f, FechaCreacion = new DateTime(2021, 3, 15) },
+        };
+        
+    }
 
     public bool ExistsById(int id) {
 
-        return FindById(id) != null; // true o false
+        return FindById(id) != null;
     }
 
     public Product FindById(int id) {
@@ -31,35 +37,49 @@ public class ProductListRepository : IProductRepository {
         foreach (Product product in products)
         {
             if (product.Id == id)
-                Console.WriteLine($"Se ha encontrado el siguente producto al buscar por ID: \n");
-                Console.WriteLine(product);
+            {
+                Console.WriteLine("Se ha encontrado el siguiente producto: \n" + product);
                 return product;
-
+            }
         }
-        Console.WriteLine("No se ha encontrado nada, en la busqueda, con la ID introducida");
+        Console.WriteLine("No se ha encontrado ningún producto");
         return null;
     }
 
     public List<Product> FindAll() {
         return products;
     }
-    
-    public List<Product> FindByPrice(float price) {
+
+    public void PrintAll() {
+
+        foreach (Product product in products)
+            Console.WriteLine(product); 
+
+    }
+
+    public List<Product> FindByPrice(double minPrice, double maxPrice) {
 
         List<Product> productsByPrice = new List<Product>();
 
         foreach (Product product in products)
         {
-            if (product.Precio == price)
+            if (product.Precio >= minPrice)
             {
-                Console.WriteLine("Se han encontrado los siguientes productos: ");
-                productsByPrice.Add(product);
-                return productsByPrice;
+                if (product.Precio >= maxPrice)
+                {
+                    productsByPrice.Add(product);
+                }
             }
-            Console.WriteLine("No se han encontrado productos con este precio");
-            return null;
+            else
+            {
+                Console.WriteLine("No se han encontrado productos con este precio");
+                return null;
+            }
         }
-        return null;
+        Console.WriteLine("Se han encontrado los siguientes productos: \n");
+        foreach (Product product in productsByPrice)
+            Console.WriteLine(product);
+        return productsByPrice;
 
     }
 

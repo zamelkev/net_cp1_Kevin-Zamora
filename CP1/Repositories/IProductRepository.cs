@@ -11,9 +11,11 @@ namespace CP1.Repositories {
 
         public Product FindById(int id);
 
+        public void PrintAll();
+
         public List<Product> FindAll();
 
-        public List<Product> FindByPrice(float price);
+        public List<Product> FindByPrice(double minPrice, double maxPrice);
 
         public List<Product> FindByCreationDateTime(DateTime introducedDate);
 

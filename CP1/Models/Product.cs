@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace CP1.Models {
     public class Product {
-
         [Key]
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -18,9 +17,8 @@ namespace CP1.Models {
         public DateTime FechaCreacion { get; set; }
         public Manufacturer Fabricante { get; set; }
 
-
         public override string ToString() {
-            return $"Producto '{Nombre}'; fabricado por {Fabricante}, almacenado en la posición {Id} (dentro de la base de datos) y con un Peso de {Peso}. Actualmente hay {Cantidad} unidades en 'stock'. Y la fecha de creación fue: {FechaCreacion}";
+            return $"Producto '{Nombre}'; fabricado por {Fabricante}, almacenado en la posición {Id} (dentro de la base de datos) y con un Peso de {Peso}. Actualmente hay {Cantidad} unidades en 'stock'. Presenta un precio de venta de {Precio} Y la fecha de creación fue: {FechaCreacion}";
         }
 
     }

@@ -1,7 +1,5 @@
 ﻿using CP1;
 using System.Xml.Linq;
-using System;
-using System.Text;
 using CP1.Repositories;
 using CP1.Models;
 
@@ -12,18 +10,19 @@ IProductRepository productRepo = new ProductListRepository();
 IManufacturerRepository manufacturerRepo = new ManufacturerListRepository();
 
 
+bool condition = true;
 
-ConsoleKeyInfo isPressedKey;
 
+// while (condition)
 do
 {
+    Console.Clear();
     Console.WriteLine("BIENVENIDX A NUESTRA APLICACIÓN");
     Console.WriteLine("-------------------------------");
     Console.WriteLine("EL SIGUIENTE MENÚ DE OPCIONES SE MOSTRARÁ RECURRENTEMENTE HASTA QUE SE PULSE LA LETRA 'E', PARA SALIR");
     Console.WriteLine("(PULSA UNA TECLA PARA MOSTRARLO)");
 
-
-    isPressedKey = Console.ReadKey(true);
+    ConsoleKeyInfo currentKey = Console.ReadKey(true);
 
     // Imprimir MENÚ INTERACTIVO RECURRENTE
     Console.WriteLine("---------------------------------");
@@ -53,42 +52,46 @@ do
     Console.WriteLine("17) ACTUALIZAR FABRICANTE");
     Console.WriteLine("18) BORRAR FABRICANTE POR ID");
     Console.WriteLine("---------------------------------");
-    Console.WriteLine("O PULSE LA TECLA (E) PARA SALIR");
+    Console.WriteLine("O PULSE LA TECLA (ESCAPE) PARA SALIR");
     Console.WriteLine("---------------------------------");
+
+    // ConsoleKeyInfo pressedKey = Console.ReadKey();
+    // if (pressedKey == pressedKey.KeyChar.) condition = false;
+
     Console.WriteLine("---------------------------------");
     Console.WriteLine("SELECCIONE UNA OPCIÓN INTRODUCIENDO UN NÚMERO DEL 1 AL 18");
 
 
     // DESARROLLO DE LAS OPCIONES
 
-    switch (Console.ReadLine())
-    {
+    switch (Console.ReadLine()) {
         case "1":
-            // Console.Clear();
-            Console.WriteLine("OPCIÓN 1");
+            Console.WriteLine("OPCIÓN 1: BUSCAR PRODUCTO POR ID");
             Console.WriteLine("Introduce una dirección Id: ");
             int num = Convert.ToInt32(Console.ReadLine());
             productRepo.FindById(num);
-            Console.ReadKey();
-
-            break;
-        case "2":
-            /*Console.Clear();
-            Console.WriteLine("MUESTRA VALORES DEL 1 AL 50:");*/
-            Console.WriteLine("OPCIÓN 2");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
-
+            break;
+        case "2":
+            Console.WriteLine("OPCIÓN 2: MUESTRA TODOS LOS PRODUCTOS");
+            List<Product> products = productRepo.FindAll();
+            productRepo.PrintAll();
+            Console.ReadKey();
             break;
         case "3":
-            // Console.Clear();
-            Console.WriteLine("OPCIÓN 3");
+            Console.WriteLine("OPCIÓN 3: BUSCAR PRODUCTOS POR RANGO DE PRECIO");
+            Console.WriteLine("Introduce precio mínimo:");
+            double minPrice = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Introduce precio máximo:");
+            double maxPrice = Convert.ToDouble(Console.ReadLine());
+            List<Product> productsByPrice = productRepo.FindByPrice(minPrice, maxPrice);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 
             break;
         case "4":
-            // Console.Clear();
+
 
             Console.WriteLine("OPCIÓN 4");
             Console.WriteLine("Pulsa una tecla para continuar");
@@ -96,108 +99,105 @@ do
 
             break;
         case "5":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 5");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 
             break;
         case "6":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 6");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 
             break;
         case "7":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 7");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 
             break;
         case "8":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 8");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "9":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 9");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "10":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 10");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "11":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 11");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "12":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 12");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "13":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 13");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "14":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 14");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "15":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 15");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "16":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 16");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "17":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 17");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "18":
-            // Console.Clear();
+
             Console.WriteLine("OPCIÓN 8");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         default:
-            // Console.Clear();
-            /*if (isPressedKey.Key == ConsoleKey.E)
-            {
-                isPressedKey = Console.ReadKey(false);
-                break;
-            }*/
             Console.WriteLine("ESTA OPCIÓN NO EXISTE");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 
             break;
     }
+}
+while (Console.ReadKey(true).Key != ConsoleKey.X);
 
+Console.WriteLine("Has salido del bucle DO WHILE");
 
-} while (isPressedKey.Key == ConsoleKey.E);
+Console.WriteLine("El programa ha llegado a su FIN");
 
 
 

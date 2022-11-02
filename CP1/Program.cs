@@ -105,7 +105,10 @@ do
             break;
         case "5":
 
-            Console.WriteLine("OPCIÓN 5");
+            Console.WriteLine("OPCIÓN 5: MOSTRAR PRODUCTOS POR FABRICANTE");
+            Console.WriteLine("Introduce el fabricante a buscar:");
+            string manufacturer1 = Console.ReadLine();
+            productRepo.FindByManufacturer(manufacturer1);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 

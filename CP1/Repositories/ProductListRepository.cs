@@ -124,14 +124,19 @@ public class ProductListRepository : IProductRepository {
                 productsByManufacturer.Add(product);
 
             }
-            else {
-                Console.WriteLine("No se han encontrado productos con este precio");
-                return null;
-            }
         }
-        Console.WriteLine("Se han encontrado los siguientes productos: ");
+        if (productsByManufacturer.Count == 0)
+            Console.WriteLine("No se han encontrado productos fabricados por ese fabricante");
+        if (productsByManufacturer.Count > 0)
+        {
+            Console.WriteLine("Se han encontrado los siguientes productos: ");
+            foreach (Product product in productsByManufacturer)
+            {
+                Console.WriteLine(product);
+            }
+            return productsByManufacturer;
+        }
         return productsByManufacturer;
-
     }
 
 

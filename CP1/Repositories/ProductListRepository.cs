@@ -83,27 +83,33 @@ public class ProductListRepository : IProductRepository {
 
     }
 
-    public List<Product> FindByCreationDateTime(DateTime introducedDate) {
+    public List<Product> FindByCreationDateTime(int Day, int Month, int Year) {
 
         List<Product> productsByCreationDate = new List<Product>();
 
         foreach (Product product in products)
         {
-            int result = DateTime.Compare(product.FechaCreacion, introducedDate);
-            if ( result < 0)
+            DateTime auxDate = new DateTime ( Year, Month, Day );
+            int result = DateTime.Compare(product.FechaCreacion, auxDate);
+            if ( result > 0)
             {
                 
                 productsByCreationDate.Add(product);
                 
-            } else
-            {
-                Console.WriteLine("No se han encontrado productos con esta fecha");
-                return null;
-            }
+            } 
         }
-        Console.WriteLine("Se han encontrado los siguientes productos: ");
+        if (productsByCreationDate.Count == 0)
+            Console.WriteLine("No se han encontrado productos amteriores a esta fecha");
+        if (productsByCreationDate.Count > 0)
+        {
+            Console.WriteLine("Se han encontrado los siguientes productos: ");
+            foreach (Product product in productsByCreationDate)
+            {
+                Console.WriteLine(product);
+            }
+            return productsByCreationDate;
+        }
         return productsByCreationDate;
-
     }
 
     public List<Product> FindByManufacturer(string fabricante) {

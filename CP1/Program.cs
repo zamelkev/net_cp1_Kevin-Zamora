@@ -91,9 +91,14 @@ do
 
             break;
         case "4":
-
-
-            Console.WriteLine("OPCIÓN 4");
+            Console.WriteLine("OPCIÓN 4: MOSTRAR PRODUCTOS POSTERIORES A LA FECHA INTRODUCIDA");
+            Console.WriteLine("Introduce el día:");
+            int dia = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce el mes:");
+            int mes = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce el año:");
+            int año = Convert.ToInt32(Console.ReadLine());
+            productRepo.FindByCreationDateTime(dia, mes, año);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 

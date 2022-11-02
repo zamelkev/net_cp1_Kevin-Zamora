@@ -17,7 +17,7 @@ namespace CP1.Repositories {
 
         public List<Product> FindByPrice(double minPrice, double maxPrice);
 
-        public List<Product> FindByCreationDateTime(DateTime introducedDate);
+        public List<Product> FindByCreationDateTime(int Day, int Month, int Year);
 
         public List<Product> FindByManufacturer(string fabricante);
 

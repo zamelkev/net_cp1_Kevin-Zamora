@@ -21,6 +21,10 @@ namespace CP1.Repositories {
 
         public List<Product> FindByManufacturer(string fabricante);
 
+        public int FindMaxProductId();
+
+        public bool SaveNewProduct(Product product);
+
         public Product UpdateProduct(int Id);
 
         public bool DeleteById(int id);
@@ -31,8 +35,7 @@ namespace CP1.Repositories {
 
         public double CalculateNetProfit();
 
-        public int FindMaxId();
-        public bool Save(Product product);
+        
 
     }
 }

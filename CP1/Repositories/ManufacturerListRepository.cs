@@ -15,58 +15,78 @@ namespace CP1.Repositories {
             new Manufacturer { Nombre = "Lenovo"},
         };
 
-        
-            public bool ExistsById(int id) {
 
-                return FindById(id) != null; // true o false
+        public bool ExistsById(int id) {
+
+            return FindById(id) != null; // true o false
+        }
+
+        public Manufacturer FindById(int id) {
+
+            foreach (Manufacturer manufacturer in manufacturers)
+            {
+                if (manufacturer.Id == id)
+                    Console.WriteLine($"Se ha encontrado el siguente fabricante al buscar por ID: \n");
+                return manufacturer;
+
             }
+            Console.WriteLine("No se ha encontrado nada, en la busqueda, con la ID introducida");
+            return null;
+        }
 
-            public Manufacturer FindById(int id) {
+        public List<Manufacturer> FindAll() {
+            return manufacturers;
+        }
 
-                foreach (Manufacturer manufacturer in manufacturers)
+
+        public bool ThisManufacturerExist(string name) {
+            foreach (Manufacturer manufacturer in manufacturers)
+            {
+                if ((manufacturer.Nombre.ToString().ToLower()).Equals(name.ToLower()))
                 {
-                    if (manufacturer.Id == id)
-                        Console.WriteLine($"Se ha encontrado el siguente fabricante al buscar por ID: \n");
-                    return manufacturer;
+
+                    return true;
 
                 }
-                Console.WriteLine("No se ha encontrado nada, en la busqueda, con la ID introducida");
-                return null;
+                else { return false; }
             }
+            return false;
+        }
 
-            public List<Manufacturer> FindAll() {
-                return manufacturers;
+
+        public int FindMaxManufacturerId() {
+
+            int maxId = 0;
+
+            foreach (Manufacturer manufacturer in manufacturers)
+            {
+                if (maxId < manufacturer.Id)
+                    maxId = manufacturer.Id;
             }
+            return maxId;
 
-            
+        }
 
-            
-
-            public int FindMaxId() {
-
-                int maxId = 0;
-
-                foreach (Manufacturer manufacturer in manufacturers)
-                    if (maxId < manufacturer.Id)
-                        maxId = manufacturer.Id;
-
-                return maxId;
-
-            }
-
-            public bool Save(Manufacturer manufacturer) {
-
-                int maxId = FindMaxId();
-                int nextId = maxId++;
-
-                manufacturer.Id = nextId;
+        public void AddNewManufacturer(string newManufacturer, bool exist) {
+            if (!exist)
+            {
+                int nextId = FindMaxManufacturerId() + 1;
+                Manufacturer manufacturer = new Manufacturer { Id = nextId, Nombre = newManufacturer };
                 manufacturers.Add(manufacturer);
-
-                Console.WriteLine("El nuevo fabricante se ha añadido correctamente");
-
-                return true;
-
+                Console.WriteLine("Se ha añadido el siguiente fabricante:");
+                Console.WriteLine(manufacturer);
             }
+            else
+            {
+                Console.WriteLine("El fabricante introducido ya existe, por ende no se ha añadido");
+                foreach (Manufacturer manufacturer in manufacturers)
+                {
+                    if (manufacturer.Nombre.ToLower().Equals(newManufacturer.ToLower()))
+                        Console.WriteLine(manufacturer);
+                }
+                
+            }
+        }
 
         public Manufacturer UpdateManufacturer(int Id) {
             Manufacturer updatedManufacturer = new Manufacturer { };

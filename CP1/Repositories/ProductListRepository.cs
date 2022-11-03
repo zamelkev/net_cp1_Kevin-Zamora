@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using CP1.Models;
 using CP1.Repositories;
 
+
 namespace CP1.Repositories; 
 public class ProductListRepository : IProductRepository {
 
@@ -140,7 +141,7 @@ public class ProductListRepository : IProductRepository {
     }
 
 
-    public int FindMaxId() {
+    public int FindMaxProductId() {
 
         int maxId = 0;
 
@@ -152,9 +153,9 @@ public class ProductListRepository : IProductRepository {
 
     }
 
-    public bool Save(Product product) {
+    public bool SaveNewProduct(Product product) {
 
-        int maxId = FindMaxId();
+        int maxId = FindMaxProductId();
         int nextId = maxId++;
 
         product.Id = nextId;

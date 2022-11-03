@@ -19,12 +19,12 @@ namespace CP1.Repositories {
         public List<Manufacturer> FindAll();
 
 
+        public bool ThisManufacturerExist(string name);
 
 
+        public int FindMaxManufacturerId();
 
-        public int FindMaxId();
-
-        public bool Save(Manufacturer manufacturer);
+        public void AddNewManufacturer(string newManufacturer, bool exist);
 
         public Manufacturer UpdateManufacturer(int Id);
 

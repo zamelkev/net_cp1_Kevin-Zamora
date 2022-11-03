@@ -114,8 +114,28 @@ do
 
             break;
         case "6":
+            /*
+             public int Id { get; set; }
+        public string Nombre { get; set; }
+        public float Peso { get; set; }
+        public float Precio { get; set; }
+        public int Cantidad { get; set; }
+        public float Coste { get; set; }
+        public DateTime FechaCreacion { get; set; }
+        public Manufacturer Fabricante { get; set; }
+             */
+            Console.WriteLine("OPCIÓN 6: AÑADIR NUEVO PRODUCTO");
+            Console.WriteLine("Introduce el nombre del producto:");
+            Console.ReadLine();
+            
+            string fabricante = Console.ReadLine();
+            bool exist1 = manufacturerRepo.ThisManufacturerExist(fabricante);
 
-            Console.WriteLine("OPCIÓN 6");
+
+
+
+            manufacturerRepo.AddNewManufacturer(fabricante, exist1); 
+
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
 
@@ -176,8 +196,12 @@ do
             Console.ReadKey();
             break;
         case "16":
+            Console.WriteLine("OPCIÓN 16: AÑADIR NUEVO FABRICANTE");
+            Console.WriteLine("Introduce el nombre del fabricante");
+            string nombreFabricante = Console.ReadLine();
+            bool exist = manufacturerRepo.ThisManufacturerExist(nombreFabricante);
+            manufacturerRepo.AddNewManufacturer(nombreFabricante, exist);
 
-            Console.WriteLine("OPCIÓN 16");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

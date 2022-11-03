@@ -116,25 +116,47 @@ do
         case "6":
             /*
              public int Id { get; set; }
-        public string Nombre { get; set; }
-        public float Peso { get; set; }
-        public float Precio { get; set; }
-        public int Cantidad { get; set; }
-        public float Coste { get; set; }
+        \public string Nombre { get; set; }
+        \public float Peso { get; set; }
+        \public float Precio { get; set; }
+        \public int Cantidad { get; set; }
+        \public float Coste { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public Manufacturer Fabricante { get; set; }
+        \public Manufacturer Fabricante { get; set; }
              */
-            Console.WriteLine("OPCIÓN 6: AÑADIR NUEVO PRODUCTO");
+            Console.WriteLine("OPCIÓN 6: AÑADIR NUEVO PRODUCTO \n");
             Console.WriteLine("Introduce el nombre del producto:");
-            Console.ReadLine();
+            string nombreProducto = Console.ReadLine();
+            Console.WriteLine("Introduce la cantidad:");
+            int cantidad = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce el fabricante:");
+            string fabricanteABuscar = Console.ReadLine();
+            Console.WriteLine("Introduce su peso:");
+            double peso = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Introduce su precio de venta (sin IVA):");
+            double precio = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Introduce su precio de coste:");
+            double precioCoste = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("( Fecha de Creación )");
+            Console.WriteLine("Introduce el día:");
+            int diaCreacion = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce el mes:");
+            int mesCreación = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce el año:");
+            int añoCreación = Convert.ToInt32(Console.ReadLine());
+
+            DateTime fechaCreación = new DateTime(añoCreación, mesCreación, diaCreacion);
             
-            string fabricante = Console.ReadLine();
-            bool exist1 = manufacturerRepo.ThisManufacturerExist(fabricante);
+            bool exist1 = manufacturerRepo.ThisManufacturerExist(fabricanteABuscar);
+            if (!exist1)
+            {
+                manufacturerRepo.AddNewManufacturer(fabricanteABuscar, exist1);
+            }
+            else { Console.WriteLine("El fabricante se ha detectado correctamente"); }
 
-
-
-
-            manufacturerRepo.AddNewManufacturer(fabricante, exist1); 
+            exist1 = manufacturerRepo.ThisManufacturerExist(fabricanteABuscar);
+            Product productToAdd = new Product { Nombre = nombreProducto, Cantidad = cantidad, Peso = peso, Precio = precio, Coste = precioCoste, FechaCreacion = fechaCreación, Fabricante = new Manufacturer { Nombre = fabricanteABuscar } };
+            productRepo.SaveNewProduct(productToAdd);
 
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();

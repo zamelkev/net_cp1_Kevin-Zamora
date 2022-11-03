@@ -225,7 +225,7 @@ public class ProductListRepository : IProductRepository {
 
     public double CalculatePricesSum() {
 
-        float sum = 0;
+        double sum = 0;
 
         foreach (Product comp in products)
             sum += comp.Precio;
@@ -235,7 +235,7 @@ public class ProductListRepository : IProductRepository {
 
     public double CalculateGrossBenefit() {
 
-        float sum = 0;
+        double sum = 0;
 
         foreach (Product comp in products)
             sum += comp.Precio;
@@ -245,7 +245,7 @@ public class ProductListRepository : IProductRepository {
 
     public double CalculateNetProfit() {
 
-        float sum = 0;
+        double sum = 0;
 
         foreach (Product comp in products)
             sum += comp.Precio - comp.Coste;
@@ -263,7 +263,7 @@ public class ProductListRepository : IProductRepository {
 
         foreach (Product comp in products)
         {
-            float aux = comp.Precio * (1 + (IVA/100));
+            double aux = comp.Precio * (1 + (IVA/100));
             comp.Precio = aux;
             productsWithIVA.Add(comp);
         }

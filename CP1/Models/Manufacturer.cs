@@ -10,8 +10,14 @@ namespace CP1.Models {
 
         [Key]
         public int Id { get; set; }
-        public String Nombre { get; set; }
 
+        public String Nombre;
+        public String getNombre() {
+            return Nombre;
+        }
+        public void setNombre(string n) {
+            this.Nombre = n;
+        }
 
 
         public List<Product> products = new List<Product>();
@@ -19,8 +25,11 @@ namespace CP1.Models {
         public Manufacturer() { }
 
         public override string ToString() {
-            return $"{Nombre}";
+            return $"ID: {Id}, Fabricante: {Nombre}";
         }
 
+        public static implicit operator Manufacturer(string v) {
+            throw new NotImplementedException();
+        }
     }
 }

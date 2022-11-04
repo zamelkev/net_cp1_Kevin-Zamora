@@ -233,6 +233,8 @@ do
         case "11":
 
             Console.WriteLine("OPCIÓN 11: CALCULAR BENEFICIO BRUTO");
+            double beneficioBruto = productRepo.CalculateGrossBenefit();
+            Console.WriteLine("El beneficio bruto, resultado de la mera suma del precio de los productos, es: " + beneficioBruto);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

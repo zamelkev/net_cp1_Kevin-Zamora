@@ -34,6 +34,8 @@ namespace CP1.Repositories {
 
         public double CalculatePricesSum();
 
+        public double CalculateGrossBenefit();
+
         public double CalculateNetProfit();
 
         

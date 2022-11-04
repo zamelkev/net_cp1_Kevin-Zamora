@@ -225,6 +225,8 @@ do
         case "10":
 
             Console.WriteLine("OPCIÓN 10: CALCULAR SUMA TOTAL DE LOS PRECIOS");
+            double suma = productRepo.CalculatePricesSum();
+            if (suma == 0) { Console.WriteLine("La lista está vacia"); } else { Console.WriteLine("La suma de los precios de los productos es: " + suma); }
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

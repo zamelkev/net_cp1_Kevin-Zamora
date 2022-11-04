@@ -261,21 +261,36 @@ public class ProductListRepository : IProductRepository {
         return (double)sum;
     }
 
-
+    
     public List<Product> GetProductsWithIVA ( int IVA = 21 ) {
 
-        List<Product> productsWithIVA = new List<Product>();
+        List<Product> productsWithIVA = new List<Product> { };
 
+        if (IVA < 0)
+            return null;
+        
         if (!products.Any())
             return null;
 
-        foreach (Product comp in products)
-        {
-            double aux = comp.Precio * (1 + (IVA/100));
-            comp.Precio = aux;
-            productsWithIVA.Add(comp);
-        }
+        foreach (Product mod in productsWithIVA)
+            {
+
+                double aux = mod.Precio * (1 + (IVA / 100));
+                mod.Precio = aux;
+                productsWithIVA.Add(mod);
+            }
         
+        
+        Console.WriteLine("Lista de productos original: ");
+        foreach (Product org in products)
+        {
+            Console.WriteLine(org);
+        }
+        Console.WriteLine("Lista de productos con IVA incluido: ");
+        foreach (Product mod in productsWithIVA)
+        {
+            Console.WriteLine(mod);
+        }
         return productsWithIVA;
     }
 

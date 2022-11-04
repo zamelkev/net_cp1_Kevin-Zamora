@@ -38,7 +38,10 @@ namespace CP1.Repositories {
 
         public double CalculateNetProfit();
 
-        
+        List<Product> GetProductsWithIVA(int IVA = 21);
+
+
+
 
     }
 }

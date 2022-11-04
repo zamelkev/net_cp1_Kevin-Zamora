@@ -249,6 +249,9 @@ do
         case "13":
 
             Console.WriteLine("OPCIÓN 13: MOSTRAR TODOS LOS PRODUCTOS CON EL IVA INCLUIDO");
+            Console.WriteLine("Introduce el porcentaje de IVA a sumar (sólo el excedente entero (PE: 21)):");
+            int IVA = Convert.ToInt32(Console.ReadLine());
+            productRepo.GetProductsWithIVA();
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

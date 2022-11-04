@@ -52,10 +52,12 @@ public class ProductListRepository : IProductRepository {
     }
 
     public void PrintAll() {
-
-        foreach (Product product in products)
-            Console.WriteLine(product); 
-
+        if (!products.Any()) { Console.WriteLine("La lista de productos está vacia"); }
+        else
+        {
+            foreach (Product product in products)
+                Console.WriteLine(product);
+        }
     }
 
     public List<Product> FindByPrice(double minPrice, double maxPrice) {

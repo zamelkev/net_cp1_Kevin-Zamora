@@ -207,12 +207,18 @@ do
         case "8":
 
             Console.WriteLine("OPCIÓN 8: BORRAR PRODUCTO POR ID");
+            Console.WriteLine("Introduce ID del producto a borrar:");
+            int idToSearch = Convert.ToInt32(Console.ReadLine());
+            bool isDeleted = productRepo.DeleteById(idToSearch);
+            if (isDeleted) { Console.WriteLine("El producto se ha borrado correctamente"); };
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "9":
 
             Console.WriteLine("OPCIÓN 9: BORRAR TODOS LOS PRODUCTOS");
+            bool allDeleted = productRepo.DeleteAll();
+            if (allDeleted) { Console.WriteLine("Se han borrado todos los productos de la lista"); };
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CP1.Models {
     public class Product {
-        [Key]
+        //[Key]
         public int Id { get; set; }
         public string Nombre { get; set; }
         public double Peso { get; set; }

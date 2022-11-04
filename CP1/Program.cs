@@ -241,6 +241,8 @@ do
         case "12":
 
             Console.WriteLine("OPCIÓN 12: CALCULAR BENEFICIO NETO");
+            double beneficioNeto = productRepo.CalculateNetProfit();
+            Console.WriteLine("El beneficio neto, resultado de la resta del precio de venta de los productos menos su coste, realizándola para todos los productos de la lista, es: " + beneficioNeto);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

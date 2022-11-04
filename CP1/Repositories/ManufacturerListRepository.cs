@@ -52,7 +52,21 @@ namespace CP1.Repositories {
             }
             return false;
         }
+        public int TellMeManufacturerId(string name) {
+            int id;
+            foreach (Manufacturer manufacturer in manufacturers)
+            {
+                if ((manufacturer.Nombre.ToString().ToLower()).Equals(name.ToLower()))
+                {
 
+                    id = manufacturer.Id;
+                    return id;
+
+                }
+                else { return id = 0101; }
+            }
+            return id = 0101;
+        }
 
         public int FindMaxManufacturerId() {
 

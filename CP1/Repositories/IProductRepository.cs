@@ -9,6 +9,7 @@ using CP1.Repositories;
 namespace CP1.Repositories {
     public interface IProductRepository {
 
+        public bool ExistsById(int id);
         public Product FindById(int id);
 
         public void PrintAll();
@@ -25,7 +26,7 @@ namespace CP1.Repositories {
 
         public bool SaveNewProduct(Product product);
 
-        public Product UpdateProduct(int Id);
+        public void UpdateProduct(int Id, string productNameToUpdate, int cantidad, string fabricante, int dia, int mes, int año, double peso, double precio, double coste, bool existeFabricante, int mId);
 
         public bool DeleteById(int id);
 

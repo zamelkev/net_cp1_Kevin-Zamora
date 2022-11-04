@@ -11,16 +11,16 @@ namespace CP1.Repositories {
 
         public bool ExistsById(int id) {
 
-            return FindById(id) != null; // true o false
+            return FindById(id) != null;
         }
 
         public Manufacturer FindById(int id);
 
         public List<Manufacturer> FindAll();
 
-
         public bool ThisManufacturerExist(string name);
 
+        public int TellMeManufacturerId(string name);
 
         public int FindMaxManufacturerId();
 

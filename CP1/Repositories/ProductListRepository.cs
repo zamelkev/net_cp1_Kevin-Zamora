@@ -169,30 +169,36 @@ public class ProductListRepository : IProductRepository {
     
 
 
-    public Product UpdateProduct(int Id) {
-        Product updatedProduct = new Product{};
+    public void UpdateProduct(int Id, string productNameToUpdate, int cantidad, string fabricante, int dia, int mes, int año, double peso, double precio, double coste, bool existeFabricante, int mId) {
+        Product updatedProduct = new Product { }; 
         foreach (Product product in products)
         {
-            if (ExistsById(Id))
-                return null;
             if (product.Id == Id)
             {
-                int productId = product.Id;
-                Manufacturer productManufacturer = product.Fabricante;
-                updatedProduct = new Product { Id = productId, Nombre = "Pelota", Cantidad = 6, Coste = 2, Peso = 1, 
-                    Precio = 4, Fabricante = productManufacturer, FechaCreacion = new DateTime(2021, 3, 15)
+                DateTime FechaCreacion = new DateTime(año, mes, dia);
+                Manufacturer f1 = new Manufacturer { Id = mId, Nombre = fabricante };
+                updatedProduct = new Product
+                {
+                    Id = product.Id,
+                    Nombre = productNameToUpdate,
+                    Cantidad = cantidad,
+                    Coste = coste,
+                    Peso = peso,
+                    Precio = precio,
+                    Fabricante = f1,
+                    FechaCreacion = FechaCreacion,
                 };
+
+                DeleteById(Id);
+
                 products.Add(updatedProduct);
-                Console.WriteLine($"El elemento se ha actuallizado correctamente y ha quedado así: {UpdateProduct}");
-                return updatedProduct;
+                Console.WriteLine($"El elemento se ha actuallizado correctamente");
             } else
             {
-                Console.WriteLine("No se ha encontrado el producto referido, no se ha podido actualizar");
-                return null;
+                Console.WriteLine("No se ha encontrado el producto referido y no se ha podido actualizar");
             }
             
         }
-        return updatedProduct;
     }
 
     public bool DeleteById(int id) {

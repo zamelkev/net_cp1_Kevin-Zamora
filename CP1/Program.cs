@@ -114,16 +114,7 @@ do
 
             break;
         case "6":
-            /*
-             public int Id { get; set; }
-        \public string Nombre { get; set; }
-        \public float Peso { get; set; }
-        \public float Precio { get; set; }
-        \public int Cantidad { get; set; }
-        \public float Coste { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        \public Manufacturer Fabricante { get; set; }
-             */
+            
             Console.WriteLine("OPCIÓN 6: AÑADIR NUEVO PRODUCTO \n");
             Console.WriteLine("Introduce el nombre del producto:");
             string nombreProducto = Console.ReadLine();
@@ -164,56 +155,100 @@ do
             break;
         case "7":
 
-            Console.WriteLine("OPCIÓN 7");
+            Console.WriteLine("OPCIÓN 7: ACTUALIZAR PRODUCTO EXISTENTE \n");
+            Console.WriteLine("Introduce el ID del producto a actualizar:");
+            int idABuscar = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Intruduce el nombre del fabricante al que pertenece:");
+            string manufacturerToFind = Console.ReadLine();
+            bool existId = productRepo.ExistsById(idABuscar);
+            if (!existId)
+            {
+                Console.WriteLine("No se ha encontrado el ID");
+            }
+            bool existManufacturer = manufacturerRepo.ThisManufacturerExist(manufacturerToFind);
+            if (!existManufacturer)
+            {
+                Console.WriteLine("No se ha encontrado el fabricante. Vuelve al menú y créalo");
+            }
+            else
+            {
+                Console.WriteLine("Intruduce el nombre del producto actualizado:");
+                string productNameToUpdate = Console.ReadLine();
+                Console.WriteLine("Introduce la nueva cantidad de producto:");
+                int nuevaCantidad = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Introduce el nuevo precio para el producto:");
+                double nuevoPrecio = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Introduce el nuevo coste del producto:");
+                double nuevoCoste = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Introduce el nuevo peso del producto:");
+                double nuevoPeso = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Introduce la fecha de entrada modificada:");
+                Console.WriteLine("Día:");
+                int diaEntrada = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Mes:");
+                int mesEntrada = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Año:");
+                int aEntrada = Convert.ToInt32(Console.ReadLine());
+                int idFabricante = manufacturerRepo.TellMeManufacturerId(manufacturerToFind);
+                try
+                {
+                    productRepo.UpdateProduct(idABuscar, productNameToUpdate,
+                        nuevaCantidad, manufacturerToFind, diaEntrada, mesEntrada, aEntrada, nuevoPeso, nuevoPrecio,
+                         nuevoCoste, existManufacturer, idFabricante);
+                }
+                catch { 
+                   // Console.WriteLine("Se está modificando un elemento al mismo tiempo que se recorre la lista"); 
+                }
+                productRepo.PrintAll();
+            }
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
-
             break;
         case "8":
 
-            Console.WriteLine("OPCIÓN 8");
+            Console.WriteLine("OPCIÓN 8: BORRAR PRODUCTO POR ID");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "9":
 
-            Console.WriteLine("OPCIÓN 9");
+            Console.WriteLine("OPCIÓN 9: BORRAR TODOS LOS PRODUCTOS");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "10":
 
-            Console.WriteLine("OPCIÓN 10");
+            Console.WriteLine("OPCIÓN 10: CALCULAR SUMA TOTAL DE LOS PRECIOS");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "11":
 
-            Console.WriteLine("OPCIÓN 11");
+            Console.WriteLine("OPCIÓN 11: CALCULAR BENEFICIO BRUTO");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "12":
 
-            Console.WriteLine("OPCIÓN 12");
+            Console.WriteLine("OPCIÓN 12: CALCULAR BENEFICIO NETO");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "13":
 
-            Console.WriteLine("OPCIÓN 13");
+            Console.WriteLine("OPCIÓN 13: MOSTRAR TODOS LOS PRODUCTOS CON EL IVA INCLUIDO");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "14":
 
-            Console.WriteLine("OPCIÓN 14");
+            Console.WriteLine("OPCIÓN 14: BUSCAR FABRICANTE POR ID");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "15":
 
-            Console.WriteLine("OPCIÓN 15");
+            Console.WriteLine("OPCIÓN 15: MOSTRAR TODOS LOS PRODUCTOS");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
@@ -229,13 +264,13 @@ do
             break;
         case "17":
 
-            Console.WriteLine("OPCIÓN 17");
+            Console.WriteLine("OPCIÓN 17: ACTUALIZAR FABRICANTE");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "18":
 
-            Console.WriteLine("OPCIÓN 8");
+            Console.WriteLine("OPCIÓN 18: BORRAR FABRICANTE POR ID");
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

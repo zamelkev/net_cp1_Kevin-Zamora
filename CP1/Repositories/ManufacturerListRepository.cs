@@ -40,6 +40,14 @@ namespace CP1.Repositories {
             return manufacturers;
         }
 
+        public void PrintAll() {
+            if (!manufacturers.Any()) { Console.WriteLine("La lista de productos está vacia"); }
+            else
+            {
+                foreach (Manufacturer manufacturer in manufacturers)
+                    Console.WriteLine(manufacturer);
+            }
+        }
 
         public bool ThisManufacturerExist(string name) {
             foreach (Manufacturer manufacturer in manufacturers)

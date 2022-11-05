@@ -265,7 +265,9 @@ do
             break;
         case "15":
 
-            Console.WriteLine("OPCIÓN 15: MOSTRAR TODOS LOS PRODUCTOS");
+            Console.WriteLine("OPCIÓN 15: MOSTRAR TODOS LOS FABRICANTES");
+            List<Manufacturer> manufacturers = manufacturerRepo.FindAll();
+            manufacturerRepo.PrintAll();
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

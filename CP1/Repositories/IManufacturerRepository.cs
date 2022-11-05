@@ -17,6 +17,7 @@ namespace CP1.Repositories {
         public Manufacturer FindById(int id);
 
         public List<Manufacturer> FindAll();
+        public void PrintAll();
 
         public bool ThisManufacturerExist(string name);
 

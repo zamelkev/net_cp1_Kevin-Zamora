@@ -19,7 +19,7 @@ do
     Console.Clear();
     Console.WriteLine("BIENVENIDX A NUESTRA APLICACIÓN");
     Console.WriteLine("-------------------------------");
-    Console.WriteLine("EL SIGUIENTE MENÚ DE OPCIONES SE MOSTRARÁ RECURRENTEMENTE HASTA QUE SE PULSE LA LETRA 'E', PARA SALIR");
+    Console.WriteLine("EL SIGUIENTE MENÚ DE OPCIONES SE MOSTRARÁ RECURRENTEMENTE HASTA QUE, EN EL SIGUIENTE PASO, SE PULSE LA TECLA E PARA SALIR");
     Console.WriteLine("(PULSA UNA TECLA PARA MOSTRARLO)");
 
     ConsoleKeyInfo currentKey = Console.ReadKey(true);
@@ -52,14 +52,14 @@ do
     Console.WriteLine("17) ACTUALIZAR FABRICANTE");
     Console.WriteLine("18) BORRAR FABRICANTE POR ID");
     Console.WriteLine("---------------------------------");
-    Console.WriteLine("O PULSE LA TECLA (ESCAPE) PARA SALIR");
+    Console.WriteLine("E) PULSE LA TECLA E (EN MAYUSCULAS) PARA SALIR");
     Console.WriteLine("---------------------------------");
 
     // ConsoleKeyInfo pressedKey = Console.ReadKey();
     // if (pressedKey == pressedKey.KeyChar.) condition = false;
 
     Console.WriteLine("---------------------------------");
-    Console.WriteLine("SELECCIONE UNA OPCIÓN INTRODUCIENDO UN NÚMERO DEL 1 AL 18");
+    Console.WriteLine("SELECCIONE UNA OPCIÓN INTRODUCIENDO UN NÚMERO DEL 1 AL 18 (O LA 'E')");
 
 
     // DESARROLLO DE LAS OPCIONES
@@ -298,6 +298,10 @@ do
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
+        case "E":
+            Console.WriteLine("Esperamos que os haya gustado la forma de usar y el funcionamiento de nuestra aplicación de consola.");
+            Console.WriteLine("¡¡¡ Hasta pronto !!!");
+            continue;
         default:
             Console.WriteLine("ESTA OPCIÓN NO EXISTE");
             Console.WriteLine("Pulsa una tecla para continuar");
@@ -306,7 +310,7 @@ do
             break;
     }
 }
-while (Console.ReadKey(true).Key != ConsoleKey.X);
+while (Console.ReadLine() == "E");
 
 Console.WriteLine("Has salido del bucle DO WHILE");
 

@@ -291,8 +291,10 @@ do
             Console.ReadKey();
             break;
         case "18":
-
             Console.WriteLine("OPCIÓN 18: BORRAR FABRICANTE POR ID");
+            Console.WriteLine("Introduce el Id del fabricante a borrar: ");
+            int idToDelete = Convert.ToInt32(Console.ReadLine());
+            manufacturerRepo.DeleteById(idToDelete);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

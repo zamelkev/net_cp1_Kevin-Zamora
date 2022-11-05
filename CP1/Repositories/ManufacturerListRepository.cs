@@ -147,6 +147,7 @@ namespace CP1.Repositories {
                     if (manufacturers[i].Id == id)
                     {
                         manufacturers.RemoveAt(i);
+                    Console.WriteLine("El fabricante seleccionado ha sido borrado");
                         return true;
                     }
                 }

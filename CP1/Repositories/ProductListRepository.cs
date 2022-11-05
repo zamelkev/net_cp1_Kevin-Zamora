@@ -261,35 +261,47 @@ public class ProductListRepository : IProductRepository {
         return (double)sum;
     }
 
-    
-    public List<Product> GetProductsWithIVA ( int IVA = 21 ) {
+    private List<Product> Clone() {
+        List<Product> clone = new List<Product>();
+        foreach (Product comp in products)
+        {
+            clone.Add((Product)comp.Clone());
+        }
+        return clone;
+    }
 
-        List<Product> productsWithIVA = new List<Product> { };
+    public List<Product> GetProductsWithIVA ( double IVA = 21 ) {
+
+        List<Product> productsWithIVA = Clone();
 
         if (IVA < 0)
-            return null;
-        
-        if (!products.Any())
-            return null;
-
-        foreach (Product mod in productsWithIVA)
-            {
-
-                double aux = mod.Precio * (1 + (IVA / 100));
-                mod.Precio = aux;
-                productsWithIVA.Add(mod);
-            }
-        
-        
-        Console.WriteLine("Lista de productos original: ");
-        foreach (Product org in products)
         {
-            Console.WriteLine(org);
+            Console.WriteLine("No se puede operar con un valor negativo; en consecuencia, se utilizara el valor preestablecido (21%)");
+            return null;
         }
-        Console.WriteLine("Lista de productos con IVA incluido: ");
-        foreach (Product mod in productsWithIVA)
+
+        if (!products.Any())
         {
-            Console.WriteLine(mod);
+            Console.WriteLine("La lista se encuentra vacia, por ende no se puede realizar dicha operación");
+            return null;
+        }
+
+        Console.WriteLine("Lista de productos original: ");
+        foreach (Product product in products)
+        {
+            Console.WriteLine(product);
+        }
+
+        Console.WriteLine("Lista de productos con IVA: ");
+        foreach (Product product in productsWithIVA)
+        {
+            double ivaConvertion = IVA/100;
+            // Console.WriteLine("Se va a incrementar el siguiente porcentaje: " + ivaConvertion);
+            double incrementoIVA = (1 + ivaConvertion);
+            // Console.WriteLine("Se va a multiplicar por el siguiente tanto por uno: " + incrementoIVA);
+            // Console.WriteLine("El precio previo a la operación es el siguiente también: " + product.Precio);
+            product.Precio = Convert.ToDouble(product.Precio) * incrementoIVA;
+            Console.WriteLine(product);
         }
         return productsWithIVA;
     }

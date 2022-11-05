@@ -205,7 +205,6 @@ do
             Console.ReadKey();
             break;
         case "8":
-
             Console.WriteLine("OPCIÓN 8: BORRAR PRODUCTO POR ID");
             Console.WriteLine("Introduce ID del producto a borrar:");
             int idToSearch = Convert.ToInt32(Console.ReadLine());
@@ -250,8 +249,8 @@ do
 
             Console.WriteLine("OPCIÓN 13: MOSTRAR TODOS LOS PRODUCTOS CON EL IVA INCLUIDO");
             Console.WriteLine("Introduce el porcentaje de IVA a sumar (sólo el excedente entero (PE: 21)):");
-            int IVA = Convert.ToInt32(Console.ReadLine());
-            productRepo.GetProductsWithIVA();
+            double IVA = Convert.ToDouble(Console.ReadLine());
+            productRepo.GetProductsWithIVA(IVA);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

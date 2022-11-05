@@ -20,7 +20,7 @@ namespace CP1.Models {
         public Manufacturer getFabricante() {
             return Fabricante;
         }
-        public void setFabricante(string f) {
+        public void setFabricante(Manufacturer f) {
             this.Fabricante = f;
         }
         /*

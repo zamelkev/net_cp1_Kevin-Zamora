@@ -27,7 +27,7 @@ namespace CP1.Repositories {
 
         public void AddNewManufacturer(string newManufacturer, bool exist);
 
-        public Manufacturer UpdateManufacturer(int Id);
+        public Manufacturer UpdateManufacturer(int Id, string newName);
 
 
 

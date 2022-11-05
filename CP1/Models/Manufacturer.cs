@@ -28,8 +28,6 @@ namespace CP1.Models {
             return $"ID: {Id}, Fabricante: {Nombre}";
         }
 
-        public static implicit operator Manufacturer(string v) {
-            throw new NotImplementedException();
-        }
+        
     }
 }

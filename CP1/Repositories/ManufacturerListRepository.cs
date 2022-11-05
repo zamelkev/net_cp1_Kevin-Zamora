@@ -112,19 +112,22 @@ namespace CP1.Repositories {
             }
         }
 
-        public Manufacturer UpdateManufacturer(int Id) {
-            Manufacturer updatedManufacturer = new Manufacturer { };
+        public Manufacturer UpdateManufacturer(int Id, string newName) {
+            
             foreach (Manufacturer manufacturer in manufacturers)
             {
-                if (ExistsById(Id))
+                if (!ExistsById(Id))
                     return null;
-                    if (manufacturer.Id == Id)
-                    {
-                        manufacturer.Nombre = "MSI";
-                    };
-                    manufacturers.Add(updatedManufacturer);
-                    Console.WriteLine($"El elemento se ha actuallizado correctamente y ha quedado así: {UpdateManufacturer}");
-                    return updatedManufacturer;
+                if (newName == null)
+                    return null;
+                if (manufacturer.Id == Id)
+                {
+                    manufacturer.Nombre = newName;
+                    Console.WriteLine($"El elemento se ha actuallizado correctamente y ha quedado así: ");
+                    Console.WriteLine(manufacturer);
+                    return manufacturer;
+                };
+                    
             }
             return null;
 

@@ -277,13 +277,16 @@ do
             string nombreFabricante = Console.ReadLine();
             bool exist = manufacturerRepo.ThisManufacturerExist(nombreFabricante);
             manufacturerRepo.AddNewManufacturer(nombreFabricante, exist);
-
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;
         case "17":
-
             Console.WriteLine("OPCIÓN 17: ACTUALIZAR FABRICANTE");
+            Console.WriteLine("Introduce el Id de fabricante a actualizar: ");
+            int idToFind = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce el nuevo nombre de fabricante: ");
+            string updatedManufacturer = Console.ReadLine();
+            manufacturerRepo.UpdateManufacturer(idToFind, updatedManufacturer);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

@@ -10,9 +10,9 @@ namespace CP1.Repositories {
     public class ManufacturerListRepository : IManufacturerRepository {
 
         public List<Manufacturer> manufacturers = new List<Manufacturer> {
-            new Manufacturer { Nombre = "Apple"},
-            new Manufacturer { Nombre = "DELL"},
-            new Manufacturer { Nombre = "Lenovo"},
+            new Manufacturer { Id = 1, Nombre = "Apple"},
+            new Manufacturer { Id = 2, Nombre = "DELL"},
+            new Manufacturer { Id = 3, Nombre = "Lenovo"},
         };
 
 
@@ -26,9 +26,11 @@ namespace CP1.Repositories {
             foreach (Manufacturer manufacturer in manufacturers)
             {
                 if (manufacturer.Id == id)
-                    Console.WriteLine($"Se ha encontrado el siguente fabricante al buscar por ID: \n");
-                return manufacturer;
-
+                {
+                    Console.WriteLine($"Se ha encontrado el siguente fabricante al buscar por ID: ");
+                    Console.WriteLine(manufacturer);
+                    return manufacturer;
+                }
             }
             Console.WriteLine("No se ha encontrado nada, en la busqueda, con la ID introducida");
             return null;

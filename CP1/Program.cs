@@ -256,8 +256,10 @@ do
             Console.ReadKey();
             break;
         case "14":
-
             Console.WriteLine("OPCIÓN 14: BUSCAR FABRICANTE POR ID");
+            Console.WriteLine("Introduce el Id del fabricante a buscar:");
+            int manufacturerId = Convert.ToInt32(Console.ReadLine());
+            manufacturerRepo.FindById(manufacturerId);
             Console.WriteLine("Pulsa una tecla para continuar");
             Console.ReadKey();
             break;

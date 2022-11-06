@@ -68,7 +68,7 @@ public class ProductListRepository : IProductRepository {
         {
             if (product.Precio >= minPrice)
             {
-                if (product.Precio >= maxPrice)
+                if (product.Precio <= maxPrice)
                 {
                     productsByPrice.Add(product);
                 }

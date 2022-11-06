@@ -9,7 +9,6 @@ IProductRepository productRepo = new ProductListRepository();
 
 IManufacturerRepository manufacturerRepo = new ManufacturerListRepository();
 
-
 do
 {
     Console.Clear();
@@ -178,10 +177,10 @@ do
                 Console.WriteLine("Año:");
                 int aEntrada = Convert.ToInt32(Console.ReadLine());
                 int idFabricante = manufacturerRepo.TellMeManufacturerId(manufacturerToFind);
-                
-                    Product updatedProduct = productRepo.UpdateProduct(idABuscar, productNameToUpdate,
-                        nuevaCantidad, manufacturerToFind, diaEntrada, mesEntrada, aEntrada, nuevoPeso, nuevoPrecio,
-                         nuevoCoste, existManufacturer, idFabricante);
+
+                Product updatedProduct = productRepo.UpdateProduct(idABuscar, productNameToUpdate,
+                    nuevaCantidad, manufacturerToFind, diaEntrada, mesEntrada, aEntrada, nuevoPeso, nuevoPrecio,
+                     nuevoCoste, existManufacturer, idFabricante);
 
                 Console.WriteLine(updatedProduct);
                 // productRepo.PrintAll();
@@ -281,14 +280,19 @@ do
             Console.WriteLine("¡¡¡ Hasta pronto !!!");
             continue;
         default:
-            Console.WriteLine("ESTA OPCIÓN NO EXISTE");
-            Console.WriteLine("Introduce una letra y pulsa INTRO");
-            Console.ReadKey();
-            break;
+            if (Console.ReadLine() != "E")
+            {
+                Console.WriteLine("ESTA OPCIÓN NO EXISTE");
+                Console.WriteLine("Introduce una letra y pulsa INTRO");
+                Console.WriteLine("Si quieres salir de la aplicación, pulsa la letra E (en mayuscula) de nuevo");
+                break;
+            }
+            else { continue; }
     }
-
+    
 }
 while (Console.ReadLine() != "E");
+// while ( Console.ReadKey().Key != ConsoleKey.E)
 
 Console.WriteLine("Has salido del bucle DO WHILE");
 

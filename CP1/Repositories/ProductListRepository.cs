@@ -75,15 +75,21 @@ public class ProductListRepository : IProductRepository {
             }
             else
             {
-                Console.WriteLine("No se han encontrado productos con este precio");
+                Console.WriteLine("No se han encontrado productos con ese rango de precios");
                 return null;
             }
         }
-        Console.WriteLine("Se han encontrado los siguientes productos: \n");
-        foreach (Product product in productsByPrice)
-            Console.WriteLine(product);
-        return productsByPrice;
-
+        if (productsByPrice.Any()) { 
+            Console.WriteLine("Se han encontrado los siguientes productos: \n");
+            foreach (Product product in productsByPrice)
+                Console.WriteLine(product);
+            return productsByPrice;
+        }
+        else
+        {
+            Console.WriteLine("No se han encontrado productos con ese rango de precios");
+        }
+        return null;
     }
 
     public List<Product> FindByCreationDateTime(int Day, int Month, int Year) {

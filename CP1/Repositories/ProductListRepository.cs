@@ -121,7 +121,7 @@ public class ProductListRepository : IProductRepository {
 
         foreach (Product product in products)
         {
-            if ((product.Fabricante.ToString().ToLower()).Equals(fabricante.ToLower()))
+            if (product.Fabricante.Nombre.ToLower().Equals(fabricante.ToLower()))
             {
 
                 productsByManufacturer.Add(product);

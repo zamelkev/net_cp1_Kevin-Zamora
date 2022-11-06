@@ -65,14 +65,14 @@ do
             int num = Convert.ToInt32(Console.ReadLine());
             productRepo.FindById(num);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "2":
             Console.WriteLine("OPCIÓN 2: MUESTRA TODOS LOS PRODUCTOS");
             List<Product> products = productRepo.FindAll();
             productRepo.PrintAll();
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "3":
             Console.WriteLine("OPCIÓN 3: BUSCAR PRODUCTOS POR RANGO DE PRECIO");
@@ -82,7 +82,7 @@ do
             double maxPrice = Convert.ToDouble(Console.ReadLine());
             List<Product> productsByPrice = productRepo.FindByPrice(minPrice, maxPrice);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "4":
             Console.WriteLine("OPCIÓN 4: MOSTRAR PRODUCTOS POSTERIORES A LA FECHA INTRODUCIDA");
@@ -94,7 +94,7 @@ do
             int año = Convert.ToInt32(Console.ReadLine());
             productRepo.FindByCreationDateTime(dia, mes, año);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "5":
             Console.WriteLine("OPCIÓN 5: MOSTRAR PRODUCTOS POR FABRICANTE");
@@ -102,7 +102,7 @@ do
             string manufacturer1 = Console.ReadLine();
             productRepo.FindByManufacturer(manufacturer1);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "6":
             Console.WriteLine("OPCIÓN 6: AÑADIR NUEVO PRODUCTO \n");
@@ -140,7 +140,7 @@ do
             productRepo.SaveNewProduct(productToAdd);
 
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "7":
             Console.WriteLine("OPCIÓN 7: ACTUALIZAR PRODUCTO EXISTENTE \n");
@@ -191,7 +191,7 @@ do
                 productRepo.PrintAll();
             }
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "8":
             Console.WriteLine("OPCIÓN 8: BORRAR PRODUCTO POR ID");
@@ -200,35 +200,35 @@ do
             bool isDeleted = productRepo.DeleteById(idToSearch);
             if (isDeleted) { Console.WriteLine("El producto se ha borrado correctamente"); };
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "9":
             Console.WriteLine("OPCIÓN 9: BORRAR TODOS LOS PRODUCTOS");
             bool allDeleted = productRepo.DeleteAll();
             if (allDeleted) { Console.WriteLine("Se han borrado todos los productos de la lista"); };
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "10":
             Console.WriteLine("OPCIÓN 10: CALCULAR SUMA TOTAL DE LOS PRECIOS");
             double suma = productRepo.CalculatePricesSum();
             if (suma == 0) { Console.WriteLine("La lista está vacia"); } else { Console.WriteLine("La suma de los precios de los productos es: " + suma); }
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "11":
             Console.WriteLine("OPCIÓN 11: CALCULAR BENEFICIO BRUTO");
             double beneficioBruto = productRepo.CalculateGrossBenefit();
             Console.WriteLine("El beneficio bruto, resultado de la mera suma del precio de los productos, es: " + beneficioBruto);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "12":
             Console.WriteLine("OPCIÓN 12: CALCULAR BENEFICIO NETO");
             double beneficioNeto = productRepo.CalculateNetProfit();
             Console.WriteLine("El beneficio neto, resultado de la resta del precio de venta de los productos menos su coste, realizándola para todos los productos de la lista, es: " + beneficioNeto);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "13":
             Console.WriteLine("OPCIÓN 13: MOSTRAR TODOS LOS PRODUCTOS CON EL IVA INCLUIDO");
@@ -236,7 +236,7 @@ do
             double IVA = Convert.ToDouble(Console.ReadLine());
             productRepo.GetProductsWithIVA(IVA);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "14":
             Console.WriteLine("OPCIÓN 14: BUSCAR FABRICANTE POR ID");
@@ -244,14 +244,14 @@ do
             int manufacturerId = Convert.ToInt32(Console.ReadLine());
             manufacturerRepo.FindById(manufacturerId);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "15":
             Console.WriteLine("OPCIÓN 15: MOSTRAR TODOS LOS FABRICANTES");
             List<Manufacturer> manufacturers = manufacturerRepo.FindAll();
             manufacturerRepo.PrintAll();
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "16":
             Console.WriteLine("OPCIÓN 16: AÑADIR NUEVO FABRICANTE");
@@ -260,7 +260,7 @@ do
             bool exist = manufacturerRepo.ThisManufacturerExist(nombreFabricante);
             manufacturerRepo.AddNewManufacturer(nombreFabricante, exist);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "17":
             Console.WriteLine("OPCIÓN 17: ACTUALIZAR FABRICANTE");
@@ -270,7 +270,7 @@ do
             string updatedManufacturer = Console.ReadLine();
             manufacturerRepo.UpdateManufacturer(idToFind, updatedManufacturer);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "18":
             Console.WriteLine("OPCIÓN 18: BORRAR FABRICANTE POR ID");
@@ -278,7 +278,7 @@ do
             int idToDelete = Convert.ToInt32(Console.ReadLine());
             manufacturerRepo.DeleteById(idToDelete);
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
         case "E":
             Console.WriteLine("Esperamos que os haya gustado la forma de usar y el funcionamiento de nuestra aplicación de consola.");
@@ -287,12 +287,12 @@ do
         default:
             Console.WriteLine("ESTA OPCIÓN NO EXISTE");
             Console.WriteLine("Pulsa una tecla para continuar");
-            Console.ReadKey(true);
+            Console.ReadKey();
             break;
     }
 
 }
-while (Console.ReadLine() == "E");
+while (Console.ReadLine() != "E");
 
 Console.WriteLine("Has salido del bucle DO WHILE");
 

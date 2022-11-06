@@ -64,14 +64,14 @@ do
             Console.WriteLine("Introduce una dirección Id: ");
             int num = Convert.ToInt32(Console.ReadLine());
             productRepo.FindById(num);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "2":
             Console.WriteLine("OPCIÓN 2: MUESTRA TODOS LOS PRODUCTOS");
             List<Product> products = productRepo.FindAll();
             productRepo.PrintAll();
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "3":
@@ -81,7 +81,7 @@ do
             Console.WriteLine("Introduce precio máximo:");
             double maxPrice = Convert.ToDouble(Console.ReadLine());
             List<Product> productsByPrice = productRepo.FindByPrice(minPrice, maxPrice);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "4":
@@ -93,7 +93,7 @@ do
             Console.WriteLine("Introduce el año:");
             int año = Convert.ToInt32(Console.ReadLine());
             productRepo.FindByCreationDateTime(dia, mes, año);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "5":
@@ -101,7 +101,7 @@ do
             Console.WriteLine("Introduce el fabricante a buscar:");
             string manufacturer1 = Console.ReadLine();
             productRepo.FindByManufacturer(manufacturer1);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "6":
@@ -139,7 +139,7 @@ do
             Product productToAdd = new Product { Nombre = nombreProducto, Cantidad = cantidad, Peso = peso, Precio = precio, Coste = precioCoste, FechaCreacion = fechaCreación, Fabricante = new Manufacturer { Nombre = fabricanteABuscar } };
             productRepo.SaveNewProduct(productToAdd);
 
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "7":
@@ -190,7 +190,7 @@ do
                 }
                 productRepo.PrintAll();
             }
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "8":
@@ -199,35 +199,35 @@ do
             int idToSearch = Convert.ToInt32(Console.ReadLine());
             bool isDeleted = productRepo.DeleteById(idToSearch);
             if (isDeleted) { Console.WriteLine("El producto se ha borrado correctamente"); };
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "9":
             Console.WriteLine("OPCIÓN 9: BORRAR TODOS LOS PRODUCTOS");
             bool allDeleted = productRepo.DeleteAll();
             if (allDeleted) { Console.WriteLine("Se han borrado todos los productos de la lista"); };
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "10":
             Console.WriteLine("OPCIÓN 10: CALCULAR SUMA TOTAL DE LOS PRECIOS");
             double suma = productRepo.CalculatePricesSum();
             if (suma == 0) { Console.WriteLine("La lista está vacia"); } else { Console.WriteLine("La suma de los precios de los productos es: " + suma); }
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "11":
             Console.WriteLine("OPCIÓN 11: CALCULAR BENEFICIO BRUTO");
             double beneficioBruto = productRepo.CalculateGrossBenefit();
             Console.WriteLine("El beneficio bruto, resultado de la mera suma del precio de los productos, es: " + beneficioBruto);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "12":
             Console.WriteLine("OPCIÓN 12: CALCULAR BENEFICIO NETO");
             double beneficioNeto = productRepo.CalculateNetProfit();
             Console.WriteLine("El beneficio neto, resultado de la resta del precio de venta de los productos menos su coste, realizándola para todos los productos de la lista, es: " + beneficioNeto);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "13":
@@ -235,7 +235,7 @@ do
             Console.WriteLine("Introduce el porcentaje de IVA a sumar (sólo el excedente entero (PE: 21)):");
             double IVA = Convert.ToDouble(Console.ReadLine());
             productRepo.GetProductsWithIVA(IVA);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "14":
@@ -243,14 +243,14 @@ do
             Console.WriteLine("Introduce el Id del fabricante a buscar:");
             int manufacturerId = Convert.ToInt32(Console.ReadLine());
             manufacturerRepo.FindById(manufacturerId);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "15":
             Console.WriteLine("OPCIÓN 15: MOSTRAR TODOS LOS FABRICANTES");
             List<Manufacturer> manufacturers = manufacturerRepo.FindAll();
             manufacturerRepo.PrintAll();
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "16":
@@ -259,7 +259,7 @@ do
             string nombreFabricante = Console.ReadLine();
             bool exist = manufacturerRepo.ThisManufacturerExist(nombreFabricante);
             manufacturerRepo.AddNewManufacturer(nombreFabricante, exist);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "17":
@@ -269,7 +269,7 @@ do
             Console.WriteLine("Introduce el nuevo nombre de fabricante: ");
             string updatedManufacturer = Console.ReadLine();
             manufacturerRepo.UpdateManufacturer(idToFind, updatedManufacturer);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "18":
@@ -277,7 +277,7 @@ do
             Console.WriteLine("Introduce el Id del fabricante a borrar: ");
             int idToDelete = Convert.ToInt32(Console.ReadLine());
             manufacturerRepo.DeleteById(idToDelete);
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
         case "E":
@@ -286,7 +286,7 @@ do
             continue;
         default:
             Console.WriteLine("ESTA OPCIÓN NO EXISTE");
-            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();
             break;
     }

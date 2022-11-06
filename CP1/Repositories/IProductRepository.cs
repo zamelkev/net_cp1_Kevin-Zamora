@@ -26,7 +26,7 @@ namespace CP1.Repositories {
 
         public bool SaveNewProduct(Product product);
 
-        public void UpdateProduct(int Id, string productNameToUpdate, int cantidad, string fabricante, int dia, int mes, int año, double peso, double precio, double coste, bool existeFabricante, int mId);
+        public Product UpdateProduct(int Id, string productNameToUpdate, int cantidad, string fabricante, int dia, int mes, int año, double peso, double precio, double coste, bool existeFabricante, int mId);
 
         public bool DeleteById(int id);
 

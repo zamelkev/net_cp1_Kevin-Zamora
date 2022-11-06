@@ -177,36 +177,35 @@ public class ProductListRepository : IProductRepository {
     
 
 
-    public void UpdateProduct(int Id, string productNameToUpdate, int cantidad, string fabricante, int dia, int mes, int año, double peso, double precio, double coste, bool existeFabricante, int mId) {
-        Product updatedProduct = new Product { }; 
+    public Product UpdateProduct(int Id, string productNameToUpdate, int cantidad, string fabricante, int dia, int mes, int año, double peso, double precio, double coste, bool existeFabricante, int mId) {
+        
         foreach (Product product in products)
         {
             if (product.Id == Id)
             {
                 DateTime FechaCreacion = new DateTime(año, mes, dia);
                 Manufacturer f1 = new Manufacturer { Id = mId, Nombre = fabricante };
-                updatedProduct = new Product
-                {
-                    Id = product.Id,
-                    Nombre = productNameToUpdate,
-                    Cantidad = cantidad,
-                    Coste = coste,
-                    Peso = peso,
-                    Precio = precio,
-                    Fabricante = f1,
-                    FechaCreacion = FechaCreacion,
-                };
 
-                DeleteById(Id);
-
-                products.Add(updatedProduct);
-                Console.WriteLine($"El elemento se ha actuallizado correctamente");
-            } else
+                product.Id = product.Id;
+                product.Nombre = productNameToUpdate;
+                product.Cantidad = cantidad;
+                product.Coste = coste;
+                product.Peso = peso;
+                product.Precio = precio;
+                product.Fabricante = f1;
+                product.FechaCreacion = FechaCreacion;
+                
+                Console.WriteLine($"El elemento se ha actualizado correctamente");
+                return product;
+            }
+            if (!ExistsById(Id))
             {
                 Console.WriteLine("No se ha encontrado el producto referido y no se ha podido actualizar");
+                return null;
             }
-            
+            return null;
         }
+        return null;
     }
 
     public bool DeleteById(int id) {

@@ -178,17 +178,13 @@ do
                 Console.WriteLine("Año:");
                 int aEntrada = Convert.ToInt32(Console.ReadLine());
                 int idFabricante = manufacturerRepo.TellMeManufacturerId(manufacturerToFind);
-                try
-                {
-                    productRepo.UpdateProduct(idABuscar, productNameToUpdate,
+                
+                    Product updatedProduct = productRepo.UpdateProduct(idABuscar, productNameToUpdate,
                         nuevaCantidad, manufacturerToFind, diaEntrada, mesEntrada, aEntrada, nuevoPeso, nuevoPrecio,
                          nuevoCoste, existManufacturer, idFabricante);
-                }
-                catch
-                {
-                    // Console.WriteLine("Se está modificando un elemento al mismo tiempo que se recorre la lista"); 
-                }
-                productRepo.PrintAll();
+
+                Console.WriteLine(updatedProduct);
+                // productRepo.PrintAll();
             }
             Console.WriteLine("Introduce una letra y pulsa INTRO");
             Console.ReadKey();

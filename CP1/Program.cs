@@ -278,6 +278,7 @@ do
         case "E":
             Console.WriteLine("Esperamos que os haya gustado la forma de usar y el funcionamiento de nuestra aplicación de consola.");
             Console.WriteLine("¡¡¡ Hasta pronto !!!");
+            Console.WriteLine("Si quieres salir de la aplicación, pulsa la letra E (en mayuscula) de nuevo");
             continue;
         default:
             if (Console.ReadLine() != "E")
